@@ -1,0 +1,21 @@
+<aside class="sidebar col sticky-parent col-right sidebar-sticky u-hide-before-lg">
+    <div class="sticky-bottom-wrap">
+        <div class="sticky">
+            {{#is "post"}}
+                {{!-- show the last 5 articles on the post page --}}
+                {{#get "posts" limit="5" filter="id:-{{post.id}}" as |sidebar_latest_post| }}
+                    {{> "sidebar/sidebar-story" widgetTitle=(t "Latest Articles") widgetPosts=sidebar_latest_post}}
+                {{/get}}
+            {{/is}}
+
+            {{!-- Widget Sybscribe --}}
+            {{> "widget/widget-subscribers"}}
+
+            {{!-- Tags Cloud --}}
+            {{> "sidebar/sidebar-tag-cloud"}}
+
+            {{!-- Twitter Timeline --}}
+            <div class="widget-twitter js-twitter-feed sidebar-items u-hide"></div>
+        </div>
+    </div>
+</aside>
